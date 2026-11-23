@@ -95,6 +95,33 @@ footer{text-align:center;color:#777;font-size:11px;padding:25px}
 <div id="lista"><p>Nenhum projeto cadastrado.</p></div>
 </section>
 <footer>ALFA ANIME STUDIO © 2026<br>Desenvolvido para criar histórias sem limites.</footer>
+<section class="card">
+  <h2>📖 Gerador de Roteiros</h2>
+
+  <label for="ideiaRoteiro">Ideia da história</label>
+  <textarea id="ideiaRoteiro" rows="5"
+    placeholder="Conte sua ideia para o episódio..."></textarea>
+
+  <label for="nomeAnime">Nome do anime</label>
+  <input id="nomeAnime" type="text"
+    placeholder="Nome do anime">
+
+  <label for="duracaoRoteiro">Duração do episódio</label>
+  <select id="duracaoRoteiro">
+    <option value="1 minuto">1 minuto</option>
+    <option value="2 minutos">2 minutos</option>
+    <option value="5 minutos">5 minutos</option>
+    <option value="10 minutos">10 minutos</option>
+  </select>
+
+  <button onclick="gerarRoteiro()">
+    GERAR ROTEIRO
+  </button>
+
+  <div id="resultadoRoteiro" class="status">
+    Seu roteiro aparecerá aqui.
+  </div>
+</section>
 </main>
 <script>
 let projetos=[];
@@ -122,6 +149,52 @@ alert('Projeto cadastrado com sucesso!');
   document.getElementById('lista').innerHTML=projetos.map(p=>
     '<div class="status"><b>'+p.obra+'</b> - Episódio '+p.episodio+'</div>'
   ).join('');
+}
+function gerarRoteiro(){
+  const ideia=document.getElementById('ideiaRoteiro').value.trim();
+  const anime=document.getElementById('nomeAnime').value.trim();
+  const duracao=document.getElementById('duracaoRoteiro').value;
+  const resultado=document.getElementById('resultadoRoteiro');
+
+  if(!ideia){
+    alert('Escreva a ideia da história primeiro!');
+    return;
+  }
+
+  const roteiro=`
+🐉 ALFA ANIME STUDIO
+ROTEIRO DO EPISÓDIO
+
+ANIME: ${anime || 'Anime sem título'}
+DURAÇÃO: ${duracao}
+
+HISTÓRIA:
+${ideia}
+
+━━━━━━━━━━━━━━━━━━
+
+CENA 1 — INTRODUÇÃO
+Visual: Apresentação do ambiente e do protagonista.
+Narração: Uma nova história está prestes a começar.
+
+CENA 2 — DESENVOLVIMENTO
+Visual: O protagonista aparece e apresenta sua situação.
+Ação: Ele começa a enfrentar os primeiros desafios.
+Diálogo: "Minha jornada começa agora!"
+
+CENA 3 — CONFLITO
+Visual: Um acontecimento inesperado muda a situação.
+Ação: O protagonista precisa tomar uma decisão.
+Diálogo: "Não vou desistir!"
+
+CENA 4 — ENCERRAMENTO
+Visual: Uma cena marcante prepara o próximo episódio.
+Narração: O destino ainda reserva muitas surpresas.
+
+FIM DO EPISÓDIO
+`;
+
+  resultado.textContent=roteiro;
 }
 </script>
 </body>

@@ -6,122 +6,253 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#10101c">
 <title>Alfa Anime Studio</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#10101c;color:#f7f3ff;font-family:Arial,sans-serif}
-header{padding:25px 18px;background:linear-gradient(135deg,#241747,#11111d);border-bottom:1px solid #514075}
-header h1{margin:0;color:#c4a5ff;font-size:25px}
-header p{color:#c5bdd7;font-size:12px}
-main{padding:16px;max-width:650px;margin:auto}
-.card{background:#1b1a2b;border:1px solid #39334e;border-radius:15px;padding:17px;margin-bottom:15px}
-h2{font-size:17px;color:#d2b8ff;margin-top:0}
-p{color:#bcb5ce;font-size:13px;line-height:1.5}
-label{display:block;margin:13px 0 7px;font-size:13px;color:#ddd4ed}
-input,select,textarea{width:100%;padding:13px;border-radius:9px;border:1px solid #51466a;background:#11111d;color:white;font-size:14px}
-textarea{min-height:85px;resize:vertical}
-button{background:#8054db;color:white;border:0;padding:13px;border-radius:9px;font-weight:bold;width:100%;margin-top:13px;font-size:14px}
+
+body{
+  margin:0;
+  background:#10101c;
+  color:#f7f3ff;
+  font-family:Arial,sans-serif;
+}
+
+header{
+  padding:25px 18px;
+  background:linear-gradient(135deg,#241747,#11111d);
+  border-bottom:1px solid #514075;
+}
+
+header h1{
+  margin:0;
+  color:#c4a5ff;
+  font-size:25px;
+}
+
+header p{
+  color:#c5bdd7;
+  font-size:12px;
+}
+
+main{
+  padding:16px;
+  max-width:650px;
+  margin:auto;
+}
+
+.card{
+  background:#1b1a2b;
+  border:1px solid #39334e;
+  border-radius:15px;
+  padding:17px;
+  margin-bottom:15px;
+}
+
+h2{
+  font-size:17px;
+  color:#d2b8ff;
+  margin-top:0;
+}
+
+p{
+  color:#bcb5ce;
+  font-size:13px;
+  line-height:1.5;
+}
+
+label{
+  display:block;
+  margin:13px 0 7px;
+  font-size:13px;
+  color:#ddd4ed;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  border-radius:9px;
+  border:1px solid #51466a;
+  background:#11111d;
+  color:white;
+  font-size:14px;
+}
+
+textarea{
+  min-height:85px;
+  resize:vertical;
+}
+
+button{
+  background:#8054db;
+  color:white;
+  border:0;
+  padding:13px;
+  border-radius:9px;
+  font-weight:bold;
+  width:100%;
+  margin-top:13px;
+  font-size:14px;
+  cursor:pointer;
+}
+
 button:active{opacity:.8}
-.menu{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px}
-.menu div{background:#211e34;padding:15px;border-radius:11px;border:1px solid #39334e;font-size:13px}
-.menu b{display:block;color:#d6c0ff;margin-bottom:5px}
-.status{padding:12px;background:#27213b;border-radius:9px;color:#d9c8ff;font-size:13px}
-footer{text-align:center;color:#777;font-size:11px;padding:25px}
+
+.botao-excluir{
+  background:#9d354b;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.menu div{
+  background:#211e34;
+  padding:15px;
+  border-radius:11px;
+  border:1px solid #39334e;
+  font-size:13px;
+}
+
+.menu b{
+  display:block;
+  color:#d6c0ff;
+  margin-bottom:5px;
+}
+
+.status{
+  padding:12px;
+  background:#27213b;
+  border-radius:9px;
+  color:#d9c8ff;
+  font-size:13px;
+  margin-top:10px;
+  overflow-wrap:anywhere;
+}
+
+.status h3{
+  color:#d6c0ff;
+}
+
+.status p{
+  white-space:pre-line;
+}
+
+footer{
+  text-align:center;
+  color:#777;
+  font-size:11px;
+  padding:25px;
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>🐉 ALFA ANIME STUDIO</h1>
-<p>SUA CENTRAL DE PRODUÇÃO DE ANIMES</p>
-<p>● ESTÚDIO INICIALIZADO</p>
+  <h1>🐉 ALFA ANIME STUDIO</h1>
+  <p>SUA CENTRAL DE PRODUÇÃO DE ANIMES</p>
+  <p>● ESTÚDIO INICIALIZADO</p>
 </header>
+
 <main>
+
 <div class="menu">
-<div>🎬<b>Produções</b>Gerenciar animes</div>
-<div>👤<b>Personagens</b>Banco de personagens</div>
-<div>🎨<b>Estilos</b>Biblioteca visual</div>
-<div>🎙️<b>Dublagem</b>Central de vozes</div>
-<div>📖<b>Roteiros</b>Histórias e episódios</div>
-<div>🎞️<b>Editor</b>Montagem de vídeos</div>
+  <div>🎬<b>Produções</b>Gerenciar animes</div>
+  <div>👤<b>Personagens</b>Banco de personagens</div>
+  <div>🎨<b>Estilos</b>Biblioteca visual</div>
+  <div>🎙️<b>Dublagem</b>Central de vozes</div>
+  <div>📖<b>Roteiros</b>Histórias e episódios</div>
+  <div>🎞️<b>Editor</b>Montagem de vídeos</div>
 </div>
+
 <section class="card">
-<h2>🎬 Criar novo anime</h2>
-<label>Nome da obra</label>
-<input id="obra" placeholder="Ex: Kael, o Híbrido">
-<label>Número do episódio</label>
-<input id="episodio" type="number" min="1" value="1">
-<label>Duração</label>
-<select id="duracao">
-<option>1 minuto</option>
-<option selected>2 minutos</option>
-<option>3 minutos</option>
-<option>5 minutos</option>
-<option>10 minutos</option>
-<option>20 minutos</option>
-</select>
-<label>Estilo de animação</label>
-<select id="estilo">
-<option>Anime 2D tradicional</option>
-<option>Anime 3D</option>
-<option>Anime híbrido 2.5D</option>
-<option>Dark Fantasy</option>
-<option>Shonen</option>
-<option>Seinen</option>
-<option>Chibi</option>
-<option>Aquarela</option>
-<option>Cinematográfico</option>
-<option>Personalizado</option>
-</select>
-<label>Idioma das vozes</label>
-<select id="idioma">
-<option>Português brasileiro</option>
-<option>Japonês</option>
-<option>Inglês</option>
-</select>
-<label>Descrição da história</label>
-<textarea id="historia" placeholder="Descreva a história do episódio..."></textarea>
-<button onclick="criarProjeto()">CADASTRAR PROJETO</button>
+  <h2>🎬 Criar novo anime</h2>
+
+  <label>Nome da obra</label>
+  <input id="obra" placeholder="Ex: Kael, o Híbrido">
+
+  <label>Número do episódio</label>
+  <input id="episodio" type="number" min="1" value="1">
+
+  <label>Duração</label>
+  <select id="duracao">
+    <option>1 minuto</option>
+    <option selected>2 minutos</option>
+    <option>3 minutos</option>
+    <option>5 minutos</option>
+    <option>10 minutos</option>
+    <option>20 minutos</option>
+  </select>
+
+  <label>Estilo de animação</label>
+  <select id="estilo">
+    <option>Anime 2D tradicional</option>
+    <option>Anime 3D</option>
+    <option>Anime híbrido 2.5D</option>
+    <option>Dark Fantasy</option>
+    <option>Shonen</option>
+    <option>Seinen</option>
+    <option>Chibi</option>
+    <option>Aquarela</option>
+    <option>Cinematográfico</option>
+    <option>Personalizado</option>
+  </select>
+
+  <label>Idioma das vozes</label>
+  <select id="idioma">
+    <option>Português brasileiro</option>
+    <option>Japonês</option>
+    <option>Inglês</option>
+  </select>
+
+  <label>Descrição da história</label>
+  <textarea id="historia" placeholder="Descreva a história do episódio..."></textarea>
+
+  <button onclick="criarProjeto()">CADASTRAR PROJETO</button>
 </section>
+
 <section class="card">
-<h2>🤖 Central de produção</h2>
-<div id="estado" class="status">Aguardando seu primeiro projeto.</div>
-<p>📖 Roteiro: aguardando</p>
-<p>🎨 Personagens: aguardando</p>
-<p>🎙️ Dublagem: aguardando</p>
-<p>🎞️ Animação: aguardando</p>
-<p>✂️ Edição: aguardando</p>
+  <h2>🤖 Central de produção</h2>
+  <div id="estado" class="status">Aguardando seu primeiro projeto.</div>
+  <p>📖 Roteiro: aguardando</p>
+  <p>🎨 Personagens: aguardando</p>
+  <p>🎙️ Dublagem: aguardando</p>
+  <p>🎞️ Animação: aguardando</p>
+  <p>✂️ Edição: aguardando</p>
 </section>
+
 <section class="card">
-<h2>📂 Meus projetos</h2>
-<div id="lista"><p>Nenhum projeto cadastrado.</p></div>
+  <h2>📂 Meus projetos</h2>
+  <div id="lista">Nenhum projeto cadastrado.</div>
 </section>
-<footer>ALFA ANIME STUDIO © 2026<br>Desenvolvido para criar histórias sem limites.</footer>
+
 <section class="card">
   <h2>📖 Gerador de Roteiros</h2>
 
-  <label for="ideiaRoteiro">Ideia da história</label>
-  <textarea id="ideiaRoteiro" rows="5"
-    placeholder="Conte sua ideia para o episódio..."></textarea>
+  <label>Ideia da história</label>
+  <textarea id="ideiaRoteiro" placeholder="Conte sua ideia para o episódio..."></textarea>
 
-  <label for="nomeAnime">Nome do anime</label>
-  <input id="nomeAnime" type="text"
-    placeholder="Nome do anime">
+  <label>Nome do anime</label>
+  <input id="nomeAnime" placeholder="Nome do anime">
 
-  <label for="duracaoRoteiro">Duração do episódio</label>
+  <label>Duração do episódio</label>
   <select id="duracaoRoteiro">
-    <option value="1 minuto">1 minuto</option>
-    <option value="2 minutos">2 minutos</option>
-    <option value="5 minutos">5 minutos</option>
-    <option value="10 minutos">10 minutos</option>
+    <option>1 minuto</option>
+    <option>2 minutos</option>
+    <option>5 minutos</option>
+    <option>10 minutos</option>
   </select>
 
-  <button onclick="gerarRoteiro()">
-    GERAR ROTEIRO
-  </button>
+  <button onclick="gerarRoteiro()">GERAR ROTEIRO</button>
 
   <div id="resultadoRoteiro" class="status">
     Seu roteiro aparecerá aqui.
   </div>
 </section>
+
 <section class="card">
   <h2>🤖 Assistente ChatGPT</h2>
   <p>Prepare seu anime com ajuda do ChatGPT.</p>
@@ -153,20 +284,15 @@ footer{text-align:center;color:#777;font-size:11px;padding:25px}
   </select>
 
   <label>Descreva sua história</label>
-  <textarea id="iaHistoria" rows="5"
-    placeholder="Conte sua ideia..."></textarea>
+  <textarea id="iaHistoria" placeholder="Conte sua ideia..."></textarea>
 
-  <button onclick="prepararPedidoChatGPT()">
-    🤖 CRIAR COM CHATGPT
-  </button>
+  <button onclick="prepararPedidoChatGPT()">🤖 CRIAR COM CHATGPT</button>
 
-  <textarea id="pedidoChatGPT" rows="10"
-    placeholder="Seu pedido para o ChatGPT aparecerá aqui..."></textarea>
+  <textarea id="pedidoChatGPT" rows="10" placeholder="Seu pedido para o ChatGPT aparecerá aqui..."></textarea>
 
-  <button onclick="copiarPedidoChatGPT()">
-    📋 COPIAR PEDIDO
-  </button>
+  <button onclick="copiarPedidoChatGPT()">📋 COPIAR PEDIDO</button>
 </section>
+
 <section class="card">
   <h2>🧬 Banco de Personagens</h2>
 
@@ -197,46 +323,97 @@ footer{text-align:center;color:#777;font-size:11px;padding:25px}
     Seus personagens aparecerão aqui.
   </div>
 </section>
+
+<footer>
+  ALFA ANIME STUDIO © 2026<br>
+  Desenvolvido para criar histórias sem limites.
+</footer>
+
 </main>
+
 <script>
-let projetos=[];
-  projetos=JSON.parse(localStorage.getItem('alfaProjetos') || '[]');
-function criarProjeto(){
-let obra=document.getElementById('obra').value.trim();
-let historia=document.getElementById('historia').value.trim();
-if(!obra||!historia){alert('Preencha o nome do anime e a história!');return;}
-let p={
-obra:obra,
-episodio:document.getElementById('episodio').value,
-duracao:document.getElementById('duracao').value,
-estilo:document.getElementById('estilo').value,
-idioma:document.getElementById('idioma').value,
-historia:historia
-};
-projetos.push(p);
-  localStorage.setItem('alfaProjetos', JSON.stringify(projetos));
-document.getElementById('estado').textContent='Projeto cadastrado: '+obra;
-document.getElementById('lista').innerHTML=projetos.map((p,i)=>
-'<div class="status" style="margin-top:10px"><b>'+ (i+1)+'. '+p.obra+'</b><br> Episódio '+p.episodio+' • '+p.duracao+'<br>'+p.estilo+'<br>'+p.idioma+'</div>'
-).join('');
-alert('Projeto cadastrado com sucesso!');
-}if(projetos.length){
-  document.getElementById('lista').innerHTML=projetos.map(p=>
-    '<div class="status"><b>'+p.obra+'</b> - Episódio '+p.episodio+'</div>'
-  ).join('');
+
+// ==================================
+// SISTEMA DE PROJETOS
+// ==================================
+
+let projetos = JSON.parse(
+  localStorage.getItem('alfaProjetos') || '[]'
+);
+
+function mostrarProjetos(){
+  const lista = document.getElementById('lista');
+  lista.innerHTML = '';
+
+  if(projetos.length === 0){
+    lista.textContent = 'Nenhum projeto cadastrado.';
+    return;
+  }
+
+  projetos.forEach(function(p,i){
+    const ficha = document.createElement('div');
+    ficha.className = 'status';
+
+    ficha.textContent =
+      (i+1)+'. '+p.obra+
+      ' - Episódio '+p.episodio+
+      ' - '+p.duracao+
+      ' - '+p.estilo+
+      ' - '+p.idioma;
+
+    lista.appendChild(ficha);
+  });
 }
+
+function criarProjeto(){
+  const obra = document.getElementById('obra').value.trim();
+  const historia = document.getElementById('historia').value.trim();
+
+  if(!obra || !historia){
+    alert('Preencha o nome do anime e a história!');
+    return;
+  }
+
+  const p = {
+    obra: obra,
+    episodio: document.getElementById('episodio').value,
+    duracao: document.getElementById('duracao').value,
+    estilo: document.getElementById('estilo').value,
+    idioma: document.getElementById('idioma').value,
+    historia: historia
+  };
+
+  projetos.push(p);
+
+  localStorage.setItem(
+    'alfaProjetos',
+    JSON.stringify(projetos)
+  );
+
+  document.getElementById('estado').textContent =
+    'Projeto cadastrado: '+obra;
+
+  mostrarProjetos();
+
+  alert('Projeto cadastrado com sucesso!');
+}
+
+// ==================================
+// GERADOR DE ROTEIROS
+// ==================================
+
 function gerarRoteiro(){
-  const ideia=document.getElementById('ideiaRoteiro').value.trim();
-  const anime=document.getElementById('nomeAnime').value.trim();
-  const duracao=document.getElementById('duracaoRoteiro').value;
-  const resultado=document.getElementById('resultadoRoteiro');
+  const ideia = document.getElementById('ideiaRoteiro').value.trim();
+  const anime = document.getElementById('nomeAnime').value.trim();
+  const duracao = document.getElementById('duracaoRoteiro').value;
+  const resultado = document.getElementById('resultadoRoteiro');
 
   if(!ideia){
     alert('Escreva a ideia da história primeiro!');
     return;
   }
 
-  const roteiro=`
+  const roteiro = `
 🐉 ALFA ANIME STUDIO
 ROTEIRO DO EPISÓDIO
 
@@ -245,8 +422,6 @@ DURAÇÃO: ${duracao}
 
 HISTÓRIA:
 ${ideia}
-
-━━━━━━━━━━━━━━━━━━
 
 CENA 1 — INTRODUÇÃO
 Visual: Apresentação do ambiente e do protagonista.
@@ -269,98 +444,38 @@ Narração: O destino ainda reserva muitas surpresas.
 FIM DO EPISÓDIO
 `;
 
-  resultado.textContent=roteiro;
-}
-function prepararPedidoChatGPT(){
-  const anime=document.getElementById('iaAnime').value.trim();
-  const estilo=document.getElementById('iaEstilo').value;
-  const duracao=document.getElementById('iaDuracao').value;
-  const historia=document.getElementById('iaHistoria').value.trim();
-
-  if(!historia){
-    alert('Descreva a história primeiro!');
-    return;
-  }
-const personagens=obterPersonagensSalvos();
-  const pedido=`
-Você é o roteirista principal do ALFA ANIME STUDIO.
-
-Crie um episódio original de anime.
-
-NOME: ${anime || 'A definir'}
-ESTILO: ${estilo}
-DURAÇÃO: ${duracao}
-
-HISTÓRIA:
-${historia}
-PERSONAGENS CADASTRADOS:
-${personagens}
-INSTRUÇÕES:
-1. Crie um roteiro original.
-2. Divida a história em cenas.
-3. Descreva detalhadamente os cenários.
-4. Descreva as ações e expressões dos personagens.
-5. Escreva todos os diálogos em português brasileiro.
-6. Identifique quem está falando em cada diálogo.
-7. Separe a narração das falas.
-8. Mantenha a aparência e personalidade dos personagens consistentes.
-9. Inclua efeitos sonoros e indicações de música.
-10. Termine com um encerramento adequado à história.
-
-FORMATO:
-CENA 1:
-CENÁRIO:
-PERSONAGENS:
-AÇÕES:
-DIÁLOGOS:
-ÁUDIO:
-DURAÇÃO:
-
-Repita para todas as cenas.
-Entregue um roteiro pronto para produção.
-`;
-
-  document.getElementById('pedidoChatGPT').value=pedido;
+  resultado.textContent = roteiro;
 }
 
-function copiarPedidoChatGPT(){
-  const campo=document.getElementById('pedidoChatGPT');
+// ==================================
+// BANCO DE PERSONAGENS
+// ==================================
 
-  if(!campo.value.trim()){
-    alert('Primeiro crie o pedido!');
-    return;
-  }
-
-  campo.select();
-  navigator.clipboard.writeText(campo.value)
-    .then(()=>alert('Pedido copiado! Abra o ChatGPT e cole a mensagem.'))
-    .catch(()=>{
-      campo.focus();
-      campo.select();
-      alert('Selecione o texto e escolha Copiar.');
-    });
+function obterListaPersonagens(){
+  return JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
 }
+
 function salvarPersonagem(){
-  const nome=document.getElementById('charNome').value.trim();
+  const nome = document.getElementById('charNome').value.trim();
 
   if(!nome){
     alert('Digite o nome do personagem!');
     return;
   }
 
-  const personagem={
-    nome:nome,
-    idade:document.getElementById('charIdade').value,
-    aparencia:document.getElementById('charAparencia').value,
-    personalidade:document.getElementById('charPersonalidade').value,
-    roupas:document.getElementById('charRoupas').value,
-    poderes:document.getElementById('charPoderes').value,
-    voz:document.getElementById('charVoz').value
+  const personagem = {
+    nome: nome,
+    idade: document.getElementById('charIdade').value,
+    aparencia: document.getElementById('charAparencia').value,
+    personalidade: document.getElementById('charPersonalidade').value,
+    roupas: document.getElementById('charRoupas').value,
+    poderes: document.getElementById('charPoderes').value,
+    voz: document.getElementById('charVoz').value
   };
 
-  const personagens=JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
+  const personagens = obterListaPersonagens();
 
   personagens.push(personagem);
 
@@ -369,67 +484,41 @@ function salvarPersonagem(){
     JSON.stringify(personagens)
   );
 
-  alert('Personagem salvo com sucesso!');
+  document.getElementById('charNome').value = '';
+  document.getElementById('charIdade').value = '';
+  document.getElementById('charAparencia').value = '';
+  document.getElementById('charPersonalidade').value = '';
+  document.getElementById('charRoupas').value = '';
+  document.getElementById('charPoderes').value = '';
+  document.getElementById('charVoz').value = '';
+
   listarPersonagens();
+
+  alert('Personagem salvo com sucesso!');
 }
 
 function listarPersonagens(){
-  function salvarPersonagem(){
-  const nome=document.getElementById('charNome').value.trim();
+  const personagens = obterListaPersonagens();
+  const lista = document.getElementById('listaPersonagens');
 
-  if(!nome){
-    alert('Digite o nome do personagem!');
-    return;
-  }
+  lista.innerHTML = '';
 
-  const personagem={
-    nome:nome,
-    idade:document.getElementById('charIdade').value,
-    aparencia:document.getElementById('charAparencia').value,
-    personalidade:document.getElementById('charPersonalidade').value,
-    roupas:document.getElementById('charRoupas').value,
-    poderes:document.getElementById('charPoderes').value,
-    voz:document.getElementById('charVoz').value
-  };
-
-  const personagens=JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
-
-  personagens.push(personagem);
-
-  localStorage.setItem(
-    'alfaPersonagens',
-    JSON.stringify(personagens)
-  );
-
-  alert('Personagem salvo com sucesso!');
-  listarPersonagens();
-}
-
-function listarPersonagens(){
-  const personagens=JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
-
-  const lista=document.getElementById('listaPersonagens');
-  lista.innerHTML='';
-
-  if(personagens.length===0){
-    lista.textContent='Nenhum personagem cadastrado.';
+  if(personagens.length === 0){
+    lista.textContent = 'Nenhum personagem cadastrado.';
     return;
   }
 
   personagens.forEach(function(p,i){
-    const ficha=document.createElement('div');
-    ficha.className='status';
+    const ficha = document.createElement('div');
+    ficha.className = 'status';
 
-    const titulo=document.createElement('h3');
-    titulo.textContent=p.nome;
+    const titulo = document.createElement('h3');
+    titulo.textContent = p.nome;
 
-    const detalhes=document.createElement('p');
-    detalhes.style.whiteSpace='pre-line';
-    detalhes.textContent=
+    const detalhes = document.createElement('p');
+    detalhes.style.whiteSpace = 'pre-line';
+
+    detalhes.textContent =
       'Idade: '+(p.idade || 'Não informada')+
       '\nAparência: '+(p.aparencia || 'Não informada')+
       '\nPersonalidade: '+(p.personalidade || 'Não informada')+
@@ -437,47 +526,16 @@ function listarPersonagens(){
       '\nPoderes: '+(p.poderes || 'Não informados')+
       '\nVoz: '+(p.voz || 'Não informada');
 
-    const editar=document.createElement('button');
-
-function listarPersonagens(){
-  const personagens=JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
-
-  const lista=document.getElementById('listaPersonagens');
-  lista.innerHTML='';
-
-  if(personagens.length===0){
-    lista.textContent='Nenhum personagem cadastrado.';
-    return;
-  }
-
-  personagens.forEach(function(p,i){
-    const ficha=document.createElement('div');
-    ficha.className='status';
-
-    const titulo=document.createElement('h3');
-    titulo.textContent=p.nome;
-
-    const detalhes=document.createElement('p');
-    detalhes.style.whiteSpace='pre-line';
-    detalhes.textContent=
-      'Idade: '+(p.idade || 'Não informada')+
-      '\nAparência: '+(p.aparencia || 'Não informada')+
-      '\nPersonalidade: '+(p.personalidade || 'Não informada')+
-      '\nRoupas: '+(p.roupas || 'Não informadas')+
-      '\nPoderes: '+(p.poderes || 'Não informados')+
-      '\nVoz: '+(p.voz || 'Não informada');
-
-    const editar=document.createElement('button');
-    editar.textContent='EDITAR';
-    editar.onclick=function(){
+    const editar = document.createElement('button');
+    editar.textContent = 'EDITAR';
+    editar.onclick = function(){
       editarPersonagem(i);
     };
 
-    const excluir=document.createElement('button');
-    excluir.textContent='EXCLUIR';
-    excluir.onclick=function(){
+    const excluir = document.createElement('button');
+    excluir.textContent = 'EXCLUIR';
+    excluir.className = 'botao-excluir';
+    excluir.onclick = function(){
       excluirPersonagem(i);
     };
 
@@ -485,48 +543,25 @@ function listarPersonagens(){
     ficha.appendChild(detalhes);
     ficha.appendChild(editar);
     ficha.appendChild(excluir);
+
     lista.appendChild(ficha);
   });
 }
 
-listarPersonagens();
-                           
-function obterPersonagensSalvos(){
-  const personagens=JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
-
-  if(personagens.length===0){
-    return 'Nenhum personagem cadastrado.';
-  }
-
-  return personagens.map(p=>`
-NOME: ${p.nome}
-IDADE: ${p.idade || 'Não informada'}
-APARÊNCIA: ${p.aparencia || 'Não informada'}
-PERSONALIDADE: ${p.personalidade || 'Não informada'}
-ROUPAS: ${p.roupas || 'Não informadas'}
-PODERES: ${p.poderes || 'Não informados'}
-VOZ: ${p.voz || 'Não informada'}
-`).join('\n');
-}
 function editarPersonagem(i){
-  const personagens=JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
+  const personagens = obterListaPersonagens();
+  const p = personagens[i];
 
-  const p=personagens[i];
+  const nome = prompt('Nome do personagem:',p.nome);
+  if(nome === null || !nome.trim()) return;
 
-  const nome=prompt('Nome do personagem:',p.nome);
-  if(nome===null || !nome.trim()) return;
-
-  p.nome=nome.trim();
-  p.idade=prompt('Idade:',p.idade) ?? p.idade;
-  p.aparencia=prompt('Aparência:',p.aparencia) ?? p.aparencia;
-  p.personalidade=prompt('Personalidade:',p.personalidade) ?? p.personalidade;
-  p.roupas=prompt('Roupas e acessórios:',p.roupas) ?? p.roupas;
-  p.poderes=prompt('Poderes:',p.poderes) ?? p.poderes;
-  p.voz=prompt('Voz:',p.voz) ?? p.voz;
+  p.nome = nome.trim();
+  p.idade = prompt('Idade:',p.idade) ?? p.idade;
+  p.aparencia = prompt('Aparência:',p.aparencia) ?? p.aparencia;
+  p.personalidade = prompt('Personalidade:',p.personalidade) ?? p.personalidade;
+  p.roupas = prompt('Roupas e acessórios:',p.roupas) ?? p.roupas;
+  p.poderes = prompt('Poderes:',p.poderes) ?? p.poderes;
+  p.voz = prompt('Voz:',p.voz) ?? p.voz;
 
   localStorage.setItem(
     'alfaPersonagens',
@@ -540,9 +575,7 @@ function editarPersonagem(i){
 function excluirPersonagem(i){
   if(!confirm('Deseja excluir este personagem?')) return;
 
-  const personagens=JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
+  const personagens = obterListaPersonagens();
 
   personagens.splice(i,1);
 
@@ -554,6 +587,125 @@ function excluirPersonagem(i){
   listarPersonagens();
   alert('Personagem excluído!');
 }
+
+// ==================================
+// ENVIAR PERSONAGENS AO ASSISTENTE
+// ==================================
+
+function obterPersonagensSalvos(){
+  const personagens = obterListaPersonagens();
+
+  if(personagens.length === 0){
+    return 'Nenhum personagem cadastrado.';
+  }
+
+  return personagens.map(function(p){
+    return `
+NOME: ${p.nome}
+IDADE: ${p.idade || 'Não informada'}
+APARÊNCIA: ${p.aparencia || 'Não informada'}
+PERSONALIDADE: ${p.personalidade || 'Não informada'}
+ROUPAS: ${p.roupas || 'Não informadas'}
+PODERES: ${p.poderes || 'Não informados'}
+VOZ: ${p.voz || 'Não informada'}
+`;
+  }).join('\n');
+}
+
+// ==================================
+// ASSISTENTE CHATGPT
+// ==================================
+
+function prepararPedidoChatGPT(){
+  const anime = document.getElementById('iaAnime').value.trim();
+  const estilo = document.getElementById('iaEstilo').value;
+  const duracao = document.getElementById('iaDuracao').value;
+  const historia = document.getElementById('iaHistoria').value.trim();
+
+  if(!historia){
+    alert('Descreva a história primeiro!');
+    return;
+  }
+
+  const personagens = obterPersonagensSalvos();
+
+  const pedido = `
+Você é o roteirista principal do ALFA ANIME STUDIO.
+
+Crie um episódio original de anime.
+
+NOME: ${anime || 'A definir'}
+ESTILO: ${estilo}
+DURAÇÃO: ${duracao}
+
+HISTÓRIA:
+${historia}
+
+PERSONAGENS CADASTRADOS:
+${personagens}
+
+INSTRUÇÕES:
+1. Crie um roteiro original.
+2. Divida a história em cenas.
+3. Descreva detalhadamente os cenários.
+4. Descreva as ações e expressões dos personagens.
+5. Escreva todos os diálogos em português brasileiro.
+6. Identifique quem está falando em cada diálogo.
+7. Separe a narração das falas.
+8. Mantenha a aparência e personalidade dos personagens consistentes.
+9. Inclua efeitos sonoros e indicações de música.
+10. Termine com um encerramento adequado à história.
+
+FORMATO:
+
+CENA 1:
+CENÁRIO:
+PERSONAGENS:
+AÇÕES:
+DIÁLOGOS:
+ÁUDIO:
+DURAÇÃO:
+
+Repita para todas as cenas.
+
+Entregue um roteiro pronto para produção.
+`;
+
+  document.getElementById('pedidoChatGPT').value = pedido;
+}
+
+function copiarPedidoChatGPT(){
+  const campo = document.getElementById('pedidoChatGPT');
+
+  if(!campo.value.trim()){
+    alert('Primeiro crie o pedido!');
+    return;
+  }
+
+  campo.select();
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(campo.value)
+      .then(function(){
+        alert('Pedido copiado! Abra o ChatGPT e cole a mensagem.');
+      })
+      .catch(function(){
+        alert('Selecione o texto e escolha Copiar.');
+      });
+  }else{
+    alert('Selecione o texto e escolha Copiar.');
+  }
+}
+
+// ==================================
+// INICIALIZAÇÃO
+// ==================================
+
+mostrarProjetos();
+listarPersonagens();
+
 </script>
+
 </body>
-</html>
+  </html>
+  

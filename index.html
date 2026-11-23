@@ -374,40 +374,7 @@ function salvarPersonagem(){
 }
 
 function listarPersonagens(){
-  const personagens=JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
-
-  const lista=document.getElementById('listaPersonagens');
-  lista.innerHTML='';
-
-  if(personagens.length===0){
-    lista.textContent='Nenhum personagem cadastrado.';
-    return;
-  }
-
-  personagens.forEach(function(p){
-    const ficha=document.createElement('div');
-    ficha.className='status';
-
-    const titulo=document.createElement('h3');
-    titulo.textContent=p.nome;
-
-    const detalhes=document.createElement('p');
-    detalhes.textContent=
-      'Idade: '+(p.idade || 'Não informada')+
-      '\nAparência: '+(p.aparencia || 'Não informada')+
-      '\nPersonalidade: '+(p.personalidade || 'Não informada')+
-      '\nRoupas: '+(p.roupas || 'Não informadas')+
-      '\nPoderes: '+(p.poderes || 'Não informados')+
-      '\nVoz: '+(p.voz || 'Não informada');
-
-    ficha.appendChild(titulo);
-    ficha.appendChild(detalhes);
-    lista.appendChild(ficha);
-  });
-}
-function salvarPersonagem(){
+  function salvarPersonagem(){
   const nome=document.getElementById('charNome').value.trim();
 
   if(!nome){

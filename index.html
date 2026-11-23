@@ -167,6 +167,36 @@ footer{text-align:center;color:#777;font-size:11px;padding:25px}
     📋 COPIAR PEDIDO
   </button>
 </section>
+<section class="card">
+  <h2>🧬 Banco de Personagens</h2>
+
+  <label>Nome do personagem</label>
+  <input id="charNome" placeholder="Ex: Kael">
+
+  <label>Idade</label>
+  <input id="charIdade" type="number" placeholder="Idade">
+
+  <label>Aparência física</label>
+  <textarea id="charAparencia" placeholder="Cabelos, olhos, altura, características..."></textarea>
+
+  <label>Personalidade</label>
+  <textarea id="charPersonalidade" placeholder="Personalidade e comportamento..."></textarea>
+
+  <label>Roupas e acessórios</label>
+  <textarea id="charRoupas" placeholder="Descreva as roupas e acessórios..."></textarea>
+
+  <label>Poderes e habilidades</label>
+  <textarea id="charPoderes" placeholder="Descreva os poderes..."></textarea>
+
+  <label>Voz e maneira de falar</label>
+  <textarea id="charVoz" placeholder="Ex: voz grave, calma e confiante..."></textarea>
+
+  <button onclick="salvarPersonagem()">SALVAR PERSONAGEM</button>
+
+  <div id="listaPersonagens" class="status">
+    Seus personagens aparecerão aqui.
+  </div>
+</section>
 </main>
 <script>
 let projetos=[];
@@ -309,6 +339,142 @@ function copiarPedidoChatGPT(){
       alert('Selecione o texto e escolha Copiar.');
     });
 }
+function salvarPersonagem(){
+  const nome=document.getElementById('charNome').value.trim();
+
+  if(!nome){
+    alert('Digite o nome do personagem!');
+    return;
+  }
+
+  const personagem={
+    nome:nome,
+    idade:document.getElementById('charIdade').value,
+    aparencia:document.getElementById('charAparencia').value,
+    personalidade:document.getElementById('charPersonalidade').value,
+    roupas:document.getElementById('charRoupas').value,
+    poderes:document.getElementById('charPoderes').value,
+    voz:document.getElementById('charVoz').value
+  };
+
+  const personagens=JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
+
+  personagens.push(personagem);
+
+  localStorage.setItem(
+    'alfaPersonagens',
+    JSON.stringify(personagens)
+  );
+
+  alert('Personagem salvo com sucesso!');
+  listarPersonagens();
+}
+
+function listarPersonagens(){
+  const personagens=JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
+
+  const lista=document.getElementById('listaPersonagens');
+  lista.innerHTML='';
+
+  if(personagens.length===0){
+    lista.textContent='Nenhum personagem cadastrado.';
+    return;
+  }
+
+  personagens.forEach(function(p){
+    const ficha=document.createElement('div');
+    ficha.className='status';
+
+    const titulo=document.createElement('h3');
+    titulo.textContent=p.nome;
+
+    const detalhes=document.createElement('p');
+    detalhes.textContent=
+      'Idade: '+(p.idade || 'Não informada')+
+      '\nAparência: '+(p.aparencia || 'Não informada')+
+      '\nPersonalidade: '+(p.personalidade || 'Não informada')+
+      '\nRoupas: '+(p.roupas || 'Não informadas')+
+      '\nPoderes: '+(p.poderes || 'Não informados')+
+      '\nVoz: '+(p.voz || 'Não informada');
+
+    ficha.appendChild(titulo);
+    ficha.appendChild(detalhes);
+    lista.appendChild(ficha);
+  });
+}
+function salvarPersonagem(){
+  const nome=document.getElementById('charNome').value.trim();
+
+  if(!nome){
+    alert('Digite o nome do personagem!');
+    return;
+  }
+
+  const personagem={
+    nome:nome,
+    idade:document.getElementById('charIdade').value,
+    aparencia:document.getElementById('charAparencia').value,
+    personalidade:document.getElementById('charPersonalidade').value,
+    roupas:document.getElementById('charRoupas').value,
+    poderes:document.getElementById('charPoderes').value,
+    voz:document.getElementById('charVoz').value
+  };
+
+  const personagens=JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
+
+  personagens.push(personagem);
+
+  localStorage.setItem(
+    'alfaPersonagens',
+    JSON.stringify(personagens)
+  );
+
+  alert('Personagem salvo com sucesso!');
+  listarPersonagens();
+}
+
+function listarPersonagens(){
+  const personagens=JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
+
+  const lista=document.getElementById('listaPersonagens');
+  lista.innerHTML='';
+
+  if(personagens.length===0){
+    lista.textContent='Nenhum personagem cadastrado.';
+    return;
+  }
+
+  personagens.forEach(function(p){
+    const ficha=document.createElement('div');
+    ficha.className='status';
+
+    const titulo=document.createElement('h3');
+    titulo.textContent=p.nome;
+
+    const detalhes=document.createElement('p');
+    detalhes.textContent=
+      'Idade: '+(p.idade || 'Não informada')+
+      '\nAparência: '+(p.aparencia || 'Não informada')+
+      '\nPersonalidade: '+(p.personalidade || 'Não informada')+
+      '\nRoupas: '+(p.roupas || 'Não informadas')+
+      '\nPoderes: '+(p.poderes || 'Não informados')+
+      '\nVoz: '+(p.voz || 'Não informada');
+
+    ficha.appendChild(titulo);
+    ficha.appendChild(detalhes);
+    lista.appendChild(ficha);
+  });
+}
+
+listarPersonagens();
 </script>
 </body>
 </html>

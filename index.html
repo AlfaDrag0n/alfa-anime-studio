@@ -4,708 +4,360 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#10101c">
+<meta name="theme-color" content="#100d1c">
 <title>Alfa Anime Studio</title>
-
 <style>
+:root{--bg:#100d1c;--panel:#1b172b;--panel2:#242039;--purple:#9365ff;--cyan:#49d9df;--text:#f5f1ff;--muted:#aaa2bd;--danger:#ff657b;--line:#39314f}
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:#10101c;
-  color:#f7f3ff;
-  font-family:Arial,sans-serif;
-}
-
-header{
-  padding:25px 18px;
-  background:linear-gradient(135deg,#241747,#11111d);
-  border-bottom:1px solid #514075;
-}
-
-header h1{
-  margin:0;
-  color:#c4a5ff;
-  font-size:25px;
-}
-
-header p{
-  color:#c5bdd7;
-  font-size:12px;
-}
-
-main{
-  padding:16px;
-  max-width:650px;
-  margin:auto;
-}
-
-.card{
-  background:#1b1a2b;
-  border:1px solid #39334e;
-  border-radius:15px;
-  padding:17px;
-  margin-bottom:15px;
-}
-
-h2{
-  font-size:17px;
-  color:#d2b8ff;
-  margin-top:0;
-}
-
-p{
-  color:#bcb5ce;
-  font-size:13px;
-  line-height:1.5;
-}
-
-label{
-  display:block;
-  margin:13px 0 7px;
-  font-size:13px;
-  color:#ddd4ed;
-}
-
-input,select,textarea{
-  width:100%;
-  padding:13px;
-  border-radius:9px;
-  border:1px solid #51466a;
-  background:#11111d;
-  color:white;
-  font-size:14px;
-}
-
-textarea{
-  min-height:85px;
-  resize:vertical;
-}
-
-button{
-  background:#8054db;
-  color:white;
-  border:0;
-  padding:13px;
-  border-radius:9px;
-  font-weight:bold;
-  width:100%;
-  margin-top:13px;
-  font-size:14px;
-  cursor:pointer;
-}
-
-button:active{opacity:.8}
-
-.botao-excluir{
-  background:#9d354b;
-}
-
-.menu{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.menu div{
-  background:#211e34;
-  padding:15px;
-  border-radius:11px;
-  border:1px solid #39334e;
-  font-size:13px;
-}
-
-.menu b{
-  display:block;
-  color:#d6c0ff;
-  margin-bottom:5px;
-}
-
-.status{
-  padding:12px;
-  background:#27213b;
-  border-radius:9px;
-  color:#d9c8ff;
-  font-size:13px;
-  margin-top:10px;
-  overflow-wrap:anywhere;
-}
-
-.status h3{
-  color:#d6c0ff;
-}
-
-.status p{
-  white-space:pre-line;
-}
-
-footer{
-  text-align:center;
-  color:#777;
-  font-size:11px;
-  padding:25px;
-}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{padding:22px 16px;background:linear-gradient(120deg,#21133d,#17152c);border-bottom:1px solid var(--line)}
+header h1{margin:0;color:#c9b2ff;font-size:25px}
+header p{color:var(--muted);margin:8px 0 0;font-size:13px}
+nav{display:flex;gap:8px;padding:12px;overflow-x:auto;background:#151225;position:sticky;top:0;z-index:5}
+nav button{white-space:nowrap;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:11px 14px;border-radius:9px}
+nav button.active{background:var(--purple);color:white;border-color:var(--purple)}
+main{max-width:1000px;margin:auto;padding:16px}
+section.page{display:none}
+section.page.active{display:block}
+h2{font-size:21px;color:#c9b2ff;margin:8px 0 16px}
+h3{font-size:16px;color:var(--cyan);margin:0 0 12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;margin-bottom:14px}
+label{display:block;color:#d8d1e8;font-size:13px;margin:12px 0 6px}
+input,textarea,select{width:100%;background:#100e1b;color:white;border:1px solid #49405f;border-radius:8px;padding:12px;font-size:15px;outline:none}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus,select:focus{border-color:var(--purple)}
+button.action{border:0;border-radius:8px;padding:12px 15px;background:var(--purple);color:white;font-weight:bold;margin:10px 5px 0 0}
+button.secondary{background:#39314f}
+button.danger{background:#a8324a}
+button.good{background:#167c72}
+button:active{transform:scale(.98)}
+.small{font-size:12px;color:var(--muted);line-height:1.5}
+.item{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:13px;margin-top:10px}
+.item p{color:#d0c9df;white-space:pre-wrap;line-height:1.5}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px}
+.stat{background:var(--panel);padding:13px;border-radius:10px;border:1px solid var(--line)}
+.stat strong{display:block;color:var(--cyan);font-size:22px}
+.stat span{font-size:11px;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+#aviso{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);background:#2c2450;padding:12px 18px;border-radius:9px;display:none;z-index:20;box-shadow:0 4px 20px #0008}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#100e1b;padding:12px;border-radius:8px;color:#e7ddff}
+@media(max-width:600px){.row{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}main{padding:11px}header h1{font-size:22px}}
 </style>
 </head>
-
 <body>
-
 <header>
-  <h1>🐉 ALFA ANIME STUDIO</h1>
-  <p>SUA CENTRAL DE PRODUÇÃO DE ANIMES</p>
-  <p>● ESTÚDIO INICIALIZADO</p>
+<h1>🐉 ALFA ANIME STUDIO</h1>
+<p>Seu centro de criação, planejamento e produção de animes.</p>
 </header>
 
+<nav>
+<button class="active" data-page="inicio">Início</button>
+<button data-page="projetos">Projetos</button>
+<button data-page="personagens">Personagens</button>
+<button data-page="roteiro">Roteiros</button>
+<button data-page="cenas">Cenas</button>
+<button data-page="dublagem">Dublagem</button>
+<button data-page="ia">Assistente IA</button>
+<button data-page="backup">Backup</button>
+</nav>
+
 <main>
-
-<div class="menu">
-  <div>🎬<b>Produções</b>Gerenciar animes</div>
-  <div>👤<b>Personagens</b>Banco de personagens</div>
-  <div>🎨<b>Estilos</b>Biblioteca visual</div>
-  <div>🎙️<b>Dublagem</b>Central de vozes</div>
-  <div>📖<b>Roteiros</b>Histórias e episódios</div>
-  <div>🎞️<b>Editor</b>Montagem de vídeos</div>
+<section id="inicio" class="page active">
+<h2>Painel de produção</h2>
+<div class="stats">
+<div class="stat"><strong id="totalProjetos">0</strong><span>Projetos</span></div>
+<div class="stat"><strong id="totalPersonagens">0</strong><span>Personagens</span></div>
+<div class="stat"><strong id="totalCenas">0</strong><span>Cenas</span></div>
 </div>
-
-<section class="card">
-  <h2>🎬 Criar novo anime</h2>
-
-  <label>Nome da obra</label>
-  <input id="obra" placeholder="Ex: Kael, o Híbrido">
-
-  <label>Número do episódio</label>
-  <input id="episodio" type="number" min="1" value="1">
-
-  <label>Duração</label>
-  <select id="duracao">
-    <option>1 minuto</option>
-    <option selected>2 minutos</option>
-    <option>3 minutos</option>
-    <option>5 minutos</option>
-    <option>10 minutos</option>
-    <option>20 minutos</option>
-  </select>
-
-  <label>Estilo de animação</label>
-  <select id="estilo">
-    <option>Anime 2D tradicional</option>
-    <option>Anime 3D</option>
-    <option>Anime híbrido 2.5D</option>
-    <option>Dark Fantasy</option>
-    <option>Shonen</option>
-    <option>Seinen</option>
-    <option>Chibi</option>
-    <option>Aquarela</option>
-    <option>Cinematográfico</option>
-    <option>Personalizado</option>
-  </select>
-
-  <label>Idioma das vozes</label>
-  <select id="idioma">
-    <option>Português brasileiro</option>
-    <option>Japonês</option>
-    <option>Inglês</option>
-  </select>
-
-  <label>Descrição da história</label>
-  <textarea id="historia" placeholder="Descreva a história do episódio..."></textarea>
-
-  <button onclick="criarProjeto()">CADASTRAR PROJETO</button>
+<div class="card">
+<h3>Bem-vindo ao seu estúdio</h3>
+<p>Organize seus animes, crie personagens, desenvolva episódios, divida histórias em cenas e prepare prompts para ferramentas de inteligência artificial.</p>
+<p class="small">Os dados são salvos neste navegador. Faça backups regularmente para não perder seus projetos.</p>
+</div>
+<div class="card">
+<h3>Começar uma produção</h3>
+<label>Nome do anime</label>
+<input id="novoTitulo" placeholder="Ex.: Kael, o Híbrido">
+<label>Descrição da história</label>
+<textarea id="novaHistoria" placeholder="Conte a ideia principal do anime..."></textarea>
+<div class="row">
+<div><label>Estilo visual</label>
+<select id="novoEstilo">
+<option>Anime 2D cinematográfico</option><option>Anime 3D</option><option>2.5D</option><option>Dark fantasy</option><option>Shonen</option><option>Seinen</option><option>Chibi</option><option>Aquarela</option><option>Personalizado</option>
+</select></div>
+<div><label>Duração do episódio</label>
+<select id="novaDuracao"><option>1 minuto</option><option>2 minutos</option><option>5 minutos</option><option>10 minutos</option><option>15 minutos</option><option>20 minutos</option></select>
+</div></div>
+<button class="action" onclick="criarProjeto()">CRIAR PROJETO</button>
+</div>
 </section>
 
-<section class="card">
-  <h2>🤖 Central de produção</h2>
-  <div id="estado" class="status">Aguardando seu primeiro projeto.</div>
-  <p>📖 Roteiro: aguardando</p>
-  <p>🎨 Personagens: aguardando</p>
-  <p>🎙️ Dublagem: aguardando</p>
-  <p>🎞️ Animação: aguardando</p>
-  <p>✂️ Edição: aguardando</p>
+<section id="projetos" class="page">
+<h2>Meus projetos</h2>
+<div class="card">
+<h3>Novo projeto</h3>
+<label>Nome</label><input id="pTitulo" placeholder="Nome do anime">
+<label>História</label><textarea id="pHistoria" placeholder="Sinopse ou ideia"></textarea>
+<div class="row">
+<div><label>Estilo</label><select id="pEstilo"><option>Anime 2D cinematográfico</option><option>Anime 3D</option><option>2.5D</option><option>Dark fantasy</option><option>Shonen</option><option>Seinen</option><option>Chibi</option><option>Aquarela</option><option>Personalizado</option></select></div>
+<div><label>Duração</label><select id="pDuracao"><option>1 minuto</option><option>2 minutos</option><option>5 minutos</option><option>10 minutos</option><option>15 minutos</option><option>20 minutos</option></select></div>
+</div>
+<button class="action" onclick="criarProjetoFormulario()">SALVAR PROJETO</button>
+</div>
+<div id="listaProjetos"></div>
 </section>
 
-<section class="card">
-  <h2>📂 Meus projetos</h2>
-  <div id="lista">Nenhum projeto cadastrado.</div>
+<section id="personagens" class="page">
+<h2>Banco de personagens</h2>
+<div class="card">
+<h3>Ficha completa do personagem</h3>
+<input type="hidden" id="personagemEditando">
+<label>Nome</label><input id="cNome" placeholder="Nome do personagem">
+<div class="row">
+<div><label>Idade</label><input id="cIdade" placeholder="Ex.: 18 anos"></div>
+<div><label>Gênero do personagem</label><select id="cGenero"><option>Não definido</option><option>Masculino</option><option>Feminino</option><option>Outro</option></select></div>
+</div>
+<label>Aparência física</label><textarea id="cAparencia" placeholder="Altura, rosto, olhos, cabelo, pele, marcas..."></textarea>
+<label>Roupas e acessórios</label><textarea id="cRoupas" placeholder="Descreva as roupas e acessórios que devem permanecer iguais..."></textarea>
+<label>Personalidade</label><textarea id="cPersonalidade" placeholder="Comportamento, temperamento, maneira de agir..."></textarea>
+<label>Poderes e habilidades</label><textarea id="cPoderes" placeholder="Poderes, armas, técnicas e limitações..."></textarea>
+<label>Voz e maneira de falar</label><textarea id="cVoz" placeholder="Tom de voz, sotaque, idade aparente, ritmo..."></textarea>
+<label>História do personagem</label><textarea id="cHistoria" placeholder="Passado, objetivos, medos e relações..."></textarea>
+<label>Referência visual (descrição ou link)</label><input id="cReferencia" placeholder="Descrição da imagem ou URL">
+<button class="action" onclick="salvarPersonagem()">SALVAR PERSONAGEM</button>
+<button class="action secondary" onclick="limparFormularioPersonagem()">LIMPAR</button>
+</div>
+<div id="listaPersonagens"></div>
 </section>
 
-<section class="card">
-  <h2>📖 Gerador de Roteiros</h2>
-
-  <label>Ideia da história</label>
-  <textarea id="ideiaRoteiro" placeholder="Conte sua ideia para o episódio..."></textarea>
-
-  <label>Nome do anime</label>
-  <input id="nomeAnime" placeholder="Nome do anime">
-
-  <label>Duração do episódio</label>
-  <select id="duracaoRoteiro">
-    <option>1 minuto</option>
-    <option>2 minutos</option>
-    <option>5 minutos</option>
-    <option>10 minutos</option>
-  </select>
-
-  <button onclick="gerarRoteiro()">GERAR ROTEIRO</button>
-
-  <div id="resultadoRoteiro" class="status">
-    Seu roteiro aparecerá aqui.
-  </div>
+<section id="roteiro" class="page">
+<h2>Gerador de roteiros</h2>
+<div class="card">
+<label>Projeto</label><select id="roteiroProjeto"></select>
+<label>Ideia do episódio</label><textarea id="ideiaRoteiro" placeholder="O que acontece neste episódio?"></textarea>
+<div class="row">
+<div><label>Número do episódio</label><input id="numeroEpisodio" value="1"></div>
+<div><label>Duração desejada</label><select id="duracaoRoteiro"><option>1 minuto</option><option>2 minutos</option><option>5 minutos</option><option>10 minutos</option><option>15 minutos</option><option>20 minutos</option></select></div>
+</div>
+<label>Clima do episódio</label><select id="climaRoteiro"><option>Aventura e ação</option><option>Drama e emoção</option><option>Suspense e mistério</option><option>Comédia</option><option>Fantasia sombria</option><option>Romance</option><option>Terror</option></select>
+<button class="action" onclick="gerarRoteiro()">MONTAR ESTRUTURA DO ROTEIRO</button>
+</div>
+<div class="card">
+<h3>Resultado do roteiro</h3>
+<textarea id="resultadoRoteiro" style="min-height:260px" placeholder="O roteiro preparado aparecerá aqui."></textarea>
+<button class="action good" onclick="salvarRoteiro()">SALVAR ROTEIRO NO PROJETO</button>
+<button class="action secondary" onclick="copiar('resultadoRoteiro')">COPIAR ROTEIRO</button>
+</div>
 </section>
 
-<section class="card">
-  <h2>🤖 Assistente ChatGPT</h2>
-  <p>Prepare seu anime com ajuda do ChatGPT.</p>
-
-  <label>Nome do anime</label>
-  <input id="iaAnime" placeholder="Nome do anime">
-
-  <label>Estilo de animação</label>
-  <select id="iaEstilo">
-    <option>Anime 2D tradicional</option>
-    <option>Anime 3D</option>
-    <option>Anime 2.5D</option>
-    <option>Dark Fantasy</option>
-    <option>Shonen</option>
-    <option>Seinen</option>
-    <option>Chibi</option>
-    <option>Aquarela</option>
-    <option>Cinematográfico</option>
-    <option>Personalizado</option>
-  </select>
-
-  <label>Duração do episódio</label>
-  <select id="iaDuracao">
-    <option>1 minuto</option>
-    <option>2 minutos</option>
-    <option>5 minutos</option>
-    <option>10 minutos</option>
-    <option>20 minutos</option>
-  </select>
-
-  <label>Descreva sua história</label>
-  <textarea id="iaHistoria" placeholder="Conte sua ideia..."></textarea>
-
-  <button onclick="prepararPedidoChatGPT()">🤖 CRIAR COM CHATGPT</button>
-
-  <textarea id="pedidoChatGPT" rows="10" placeholder="Seu pedido para o ChatGPT aparecerá aqui..."></textarea>
-
-  <button onclick="copiarPedidoChatGPT()">📋 COPIAR PEDIDO</button>
+<section id="cenas" class="page">
+<h2>Organizador de cenas</h2>
+<div class="card">
+<label>Projeto</label><select id="cenaProjeto"></select>
+<label>Episódio</label><input id="cenaEpisodio" value="1">
+<label>Número da cena</label><input id="cenaNumero" value="1">
+<label>Local e cenário</label><input id="cenaLocal" placeholder="Ex.: floresta antiga durante a noite">
+<label>Personagens presentes</label><input id="cenaPersonagens" placeholder="Nomes separados por vírgula">
+<label>Descrição da ação</label><textarea id="cenaAcao" placeholder="O que acontece visualmente nesta cena?"></textarea>
+<label>Enquadramento e movimento de câmera</label><input id="cenaCamera" placeholder="Ex.: plano aberto, câmera acompanha o personagem">
+<label>Iluminação e atmosfera</label><input id="cenaLuz" placeholder="Ex.: luar azul, neblina e sombras">
+<label>Fala ou narração</label><textarea id="cenaFala" placeholder="Diálogo da cena..."></textarea>
+<button class="action" onclick="salvarCena()">SALVAR CENA</button>
+<button class="action secondary" onclick="gerarPromptCena()">GERAR PROMPT DA CENA</button>
+</div>
+<div class="card">
+<h3>Prompt visual da cena</h3>
+<textarea id="promptCena" style="min-height:220px" placeholder="O prompt aparecerá aqui."></textarea>
+<button class="action secondary" onclick="copiar('promptCena')">COPIAR PROMPT</button>
+</div>
+<div id="listaCenas"></div>
 </section>
 
-<section class="card">
-  <h2>🧬 Banco de Personagens</h2>
-
-  <label>Nome do personagem</label>
-  <input id="charNome" placeholder="Ex: Kael">
-
-  <label>Idade</label>
-  <input id="charIdade" type="number" placeholder="Idade">
-
-  <label>Aparência física</label>
-  <textarea id="charAparencia" placeholder="Cabelos, olhos, altura, características..."></textarea>
-
-  <label>Personalidade</label>
-  <textarea id="charPersonalidade" placeholder="Personalidade e comportamento..."></textarea>
-
-  <label>Roupas e acessórios</label>
-  <textarea id="charRoupas" placeholder="Descreva as roupas e acessórios..."></textarea>
-
-  <label>Poderes e habilidades</label>
-  <textarea id="charPoderes" placeholder="Descreva os poderes..."></textarea>
-
-  <label>Voz e maneira de falar</label>
-  <textarea id="charVoz" placeholder="Ex: voz grave, calma e confiante..."></textarea>
-
-  <button onclick="salvarPersonagem()">SALVAR PERSONAGEM</button>
-
-  <div id="listaPersonagens" class="status">
-    Seus personagens aparecerão aqui.
-  </div>
+<section id="dublagem" class="page">
+<h2>Dublagem e diálogos</h2>
+<div class="card">
+<label>Projeto</label><select id="dubProjeto"></select>
+<label>Personagem que fala</label><select id="dubPersonagem"></select>
+<label>Emoção</label><select id="dubEmocao"><option>Normal</option><option>Feliz</option><option>Triste</option><option>Com raiva</option><option>Assustado</option><option>Determinado</option><option>Chorando</option><option>Sussurrando</option></select>
+<label>Texto da fala</label><textarea id="dubTexto" placeholder="Digite a fala do personagem..."></textarea>
+<button class="action" onclick="adicionarDialogo()">ADICIONAR DIÁLOGO</button>
+</div>
+<div class="card">
+<h3>Lista de diálogos</h3>
+<div id="listaDialogos"></div>
+<button class="action secondary" onclick="gerarPromptDublagem()">PREPARAR PROMPT DE DUBLAGEM</button>
+<textarea id="promptDublagem" placeholder="Prompt de dublagem..." style="min-height:180px"></textarea>
+<button class="action secondary" onclick="copiar('promptDublagem')">COPIAR PROMPT</button>
+</div>
 </section>
 
-<footer>
-  ALFA ANIME STUDIO © 2026<br>
-  Desenvolvido para criar histórias sem limites.
-</footer>
+<section id="ia" class="page">
+<h2>Assistente de inteligência artificial</h2>
+<div class="card">
+<h3>Preparar pedido completo para IA</h3>
+<p class="small">O assistente reúne a história, as fichas dos personagens e as informações do projeto para você enviar ao ChatGPT ou a outra ferramenta de IA.</p>
+<label>Projeto</label><select id="iaProjeto"></select>
+<label>O que você quer criar?</label><select id="iaTarefa"><option>Roteiro completo de episódio</option><option>Descrição visual dos personagens</option><option>Storyboard com cenas</option><option>Prompts para gerar imagens</option><option>Prompts para animar cenas</option><option>Diálogos e dublagem</option><option>Revisar e melhorar uma história</option></select>
+<label>Instruções adicionais</label><textarea id="iaInstrucoes" placeholder="Detalhes que a IA deve respeitar..."></textarea>
+<button class="action" onclick="prepararPedidoChatGPT()">PREPARAR PEDIDO</button>
+</div>
+<div class="card">
+<h3>Pedido pronto para copiar</h3>
+<textarea id="pedidoChatGPT" style="min-height:300px" placeholder="Seu pedido aparecerá aqui..."></textarea>
+<button class="action good" onclick="copiar('pedidoChatGPT')">COPIAR PEDIDO PARA IA</button>
+</div>
+</section>
 
+<section id="backup" class="page">
+<h2>Backup e segurança</h2>
+<div class="card">
+<h3>Exportar todos os dados</h3>
+<p class="small">Baixe uma cópia dos projetos, personagens, roteiros, cenas e diálogos salvos neste navegador.</p>
+<button class="action good" onclick="exportarBackup()">BAIXAR BACKUP COMPLETO</button>
+<hr>
+<h3>Importar backup</h3>
+<p class="small">Selecione um arquivo JSON de backup criado pelo Alfa Anime Studio.</p>
+<input type="file" id="arquivoBackup" accept=".json,application/json">
+<button class="action" onclick="importarBackup()">IMPORTAR BACKUP</button>
+<hr>
+<h3>Dados armazenados</h3>
+<p id="statusDados" class="small"></p>
+</div>
+</section>
 </main>
+<div id="aviso"></div>
 
 <script>
+const CHAVES={
+ projetos:"alfaProjetos",
+ personagens:"alfaPersonagens",
+ roteiros:"alfaRoteiros",
+ cenas:"alfaCenas",
+ dialogos:"alfaDialogos"
+};
 
-// ==================================
-// SISTEMA DE PROJETOS
-// ==================================
-
-let projetos = JSON.parse(
-  localStorage.getItem('alfaProjetos') || '[]'
-);
-
-function mostrarProjetos(){
-  const lista = document.getElementById('lista');
-  lista.innerHTML = '';
-
-  if(projetos.length === 0){
-    lista.textContent = 'Nenhum projeto cadastrado.';
-    return;
-  }
-
-  projetos.forEach(function(p,i){
-    const ficha = document.createElement('div');
-    ficha.className = 'status';
-
-    ficha.textContent =
-      (i+1)+'. '+p.obra+
-      ' - Episódio '+p.episodio+
-      ' - '+p.duracao+
-      ' - '+p.estilo+
-      ' - '+p.idioma;
-
-    lista.appendChild(ficha);
-  });
+function lerDados(chave){
+ try{return JSON.parse(localStorage.getItem(chave)||"[]")}
+ catch(e){return []}
 }
+function gravarDados(chave,dados){
+ localStorage.setItem(chave,JSON.stringify(dados));
+ atualizarPainel();
+}
+function aviso(msg){
+ const el=document.getElementById("aviso");
+ el.textContent=msg;el.style.display="block";
+ setTimeout(()=>el.style.display="none",2400);
+}
+function escapar(valor){
+ return String(valor??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function copiar(id){
+ const el=document.getElementById(id);
+ if(!el||!el.value){aviso("Não há conteúdo para copiar.");return}
+ if(navigator.clipboard&&window.isSecureContext){
+  navigator.clipboard.writeText(el.value).then(()=>aviso("Copiado!")).catch(()=>copiarAlternativo(el));
+ }else copiarAlternativo(el);
+}
+function copiarAlternativo(el){
+ el.focus();el.select();
+ try{document.execCommand("copy");aviso("Copiado!")}catch(e){aviso("Selecione e copie o texto manualmente.")}
+}
+function abrirPagina(nome){
+ document.querySelectorAll("section.page").forEach(s=>s.classList.remove("active"));
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+ document.getElementById(nome).classList.add("active");
+ document.querySelector('nav button[data-page="'+nome+'"]').classList.add("active");
+ if(nome==="projetos")mostrarProjetos();
+ if(nome==="personagens")listarPersonagens();
+ if(nome==="cenas")listarCenas();
+ if(nome==="dublagem")listarDialogos();
+ atualizarSeletores();
+}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>abrirPagina(b.dataset.page)));
 
 function criarProjeto(){
-  const obra = document.getElementById('obra').value.trim();
-  const historia = document.getElementById('historia').value.trim();
-
-  if(!obra || !historia){
-    alert('Preencha o nome do anime e a história!');
-    return;
-  }
-
-  const p = {
-    obra: obra,
-    episodio: document.getElementById('episodio').value,
-    duracao: document.getElementById('duracao').value,
-    estilo: document.getElementById('estilo').value,
-    idioma: document.getElementById('idioma').value,
-    historia: historia
-  };
-
-  projetos.push(p);
-
-  localStorage.setItem(
-    'alfaProjetos',
-    JSON.stringify(projetos)
-  );
-
-  document.getElementById('estado').textContent =
-    'Projeto cadastrado: '+obra;
-
-  mostrarProjetos();
-
-  alert('Projeto cadastrado com sucesso!');
+ document.getElementById("pTitulo").value=document.getElementById("novoTitulo").value;
+ document.getElementById("pHistoria").value=document.getElementById("novaHistoria").value;
+ document.getElementById("pEstilo").value=document.getElementById("novoEstilo").value;
+ document.getElementById("pDuracao").value=document.getElementById("novaDuracao").value;
+ criarProjetoFormulario();
+}
+function criarProjetoFormulario(){
+ const titulo=document.getElementById("pTitulo").value.trim();
+ if(!titulo){aviso("Digite o nome do projeto.");return}
+ const projetos=lerDados(CHAVES.projetos);
+ projetos.push({
+  id:Date.now(),titulo,
+  historia:document.getElementById("pHistoria").value,
+  estilo:document.getElementById("pEstilo").value,
+  duracao:document.getElementById("pDuracao").value,
+  criado:new Date().toLocaleDateString("pt-BR")
+ });
+ gravarDados(CHAVES.projetos,projetos);
+ ["pTitulo","pHistoria","novoTitulo","novaHistoria"].forEach(id=>document.getElementById(id).value="");
+ mostrarProjetos();atualizarSeletores();aviso("Projeto criado!");
+}
+function mostrarProjetos(){
+ const lista=document.getElementById("listaProjetos");
+ const projetos=lerDados(CHAVES.projetos);
+ lista.innerHTML="";
+ if(!projetos.length){lista.innerHTML='<div class="card">Nenhum projeto cadastrado.</div>';return}
+ projetos.forEach((p,i)=>{
+  const div=document.createElement("div");div.className="item";
+  div.innerHTML="<h3>"+escapar(p.titulo||p.nome||"Projeto")+"</h3><p>"+escapar(p.historia||p.descricao||"Sem sinopse.")+"</p><p class='small'>"+escapar(p.estilo||"")+" • "+escapar(p.duracao||"")+"</p><button class='action secondary' onclick='editarProjeto("+i+")'>EDITAR</button><button class='action danger' onclick='excluirProjeto("+i+")'>EXCLUIR</button>";
+  lista.appendChild(div);
+ });
+}
+function editarProjeto(i){
+ const p=lerDados(CHAVES.projetos)[i];if(!p)return;
+ const titulo=prompt("Nome do projeto:",p.titulo||p.nome||"");
+ if(titulo===null)return;
+ const historia=prompt("Sinopse:",p.historia||p.descricao||"");
+ if(historia===null)return;
+ const projetos=lerDados(CHAVES.projetos);
+ projetos[i].titulo=titulo;projetos[i].historia=historia;
+ gravarDados(CHAVES.projetos,projetos);mostrarProjetos();atualizarSeletores();aviso("Projeto atualizado.");
+}
+function excluirProjeto(i){
+ if(!confirm("Excluir este projeto?"))return;
+ const p=lerDados(CHAVES.projetos);p.splice(i,1);
+ gravarDados(CHAVES.projetos,p);mostrarProjetos();atualizarSeletores();
 }
 
-// ==================================
-// GERADOR DE ROTEIROS
-// ==================================
-
-function gerarRoteiro(){
-  const ideia = document.getElementById('ideiaRoteiro').value.trim();
-  const anime = document.getElementById('nomeAnime').value.trim();
-  const duracao = document.getElementById('duracaoRoteiro').value;
-  const resultado = document.getElementById('resultadoRoteiro');
-
-  if(!ideia){
-    alert('Escreva a ideia da história primeiro!');
-    return;
-  }
-
-  const roteiro = `
-🐉 ALFA ANIME STUDIO
-ROTEIRO DO EPISÓDIO
-
-ANIME: ${anime || 'Anime sem título'}
-DURAÇÃO: ${duracao}
-
-HISTÓRIA:
-${ideia}
-
-CENA 1 — INTRODUÇÃO
-Visual: Apresentação do ambiente e do protagonista.
-Narração: Uma nova história está prestes a começar.
-
-CENA 2 — DESENVOLVIMENTO
-Visual: O protagonista aparece e apresenta sua situação.
-Ação: Ele começa a enfrentar os primeiros desafios.
-Diálogo: "Minha jornada começa agora!"
-
-CENA 3 — CONFLITO
-Visual: Um acontecimento inesperado muda a situação.
-Ação: O protagonista precisa tomar uma decisão.
-Diálogo: "Não vou desistir!"
-
-CENA 4 — ENCERRAMENTO
-Visual: Uma cena marcante prepara o próximo episódio.
-Narração: O destino ainda reserva muitas surpresas.
-
-FIM DO EPISÓDIO
-`;
-
-  resultado.textContent = roteiro;
+function limparFormularioPersonagem(){
+ ["personagemEditando","cNome","cIdade","cAparencia","cRoupas","cPersonalidade","cPoderes","cVoz","cHistoria","cReferencia"].forEach(id=>document.getElementById(id).value="");
+ document.getElementById("cGenero").value="Não definido";
 }
-
-// ==================================
-// BANCO DE PERSONAGENS
-// ==================================
-
-function obterListaPersonagens(){
-  return JSON.parse(
-    localStorage.getItem('alfaPersonagens') || '[]'
-  );
-}
-
 function salvarPersonagem(){
-  const nome = document.getElementById('charNome').value.trim();
-
-  if(!nome){
-    alert('Digite o nome do personagem!');
-    return;
-  }
-
-  const personagem = {
-    nome: nome,
-    idade: document.getElementById('charIdade').value,
-    aparencia: document.getElementById('charAparencia').value,
-    personalidade: document.getElementById('charPersonalidade').value,
-    roupas: document.getElementById('charRoupas').value,
-    poderes: document.getElementById('charPoderes').value,
-    voz: document.getElementById('charVoz').value
-  };
-
-  const personagens = obterListaPersonagens();
-
-  personagens.push(personagem);
-
-  localStorage.setItem(
-    'alfaPersonagens',
-    JSON.stringify(personagens)
-  );
-
-  document.getElementById('charNome').value = '';
-  document.getElementById('charIdade').value = '';
-  document.getElementById('charAparencia').value = '';
-  document.getElementById('charPersonalidade').value = '';
-  document.getElementById('charRoupas').value = '';
-  document.getElementById('charPoderes').value = '';
-  document.getElementById('charVoz').value = '';
-
-  listarPersonagens();
-
-  alert('Personagem salvo com sucesso!');
+ const nome=document.getElementById("cNome").value.trim();
+ if(!nome){aviso("Digite o nome do personagem.");return}
+ const p={
+  nome,idade:document.getElementById("cIdade").value,
+  genero:document.getElementById("cGenero").value,
+  aparencia:document.getElementById("cAparencia").value,
+  roupas:document.getElementById("cRoupas").value,
+  personalidade:document.getElementById("cPersonalidade").value,
+  poderes:document.getElementById("cPoderes").value,
+  voz:document.getElementById("cVoz").value,
+  historia:document.getElementById("cHistoria").value,
+  referencia:document.getElementById("cReferencia").value
+ };
+ const personagens=lerDados(CHAVES.personagens);
+ const indice=document.getElementById("personagemEditando").value;
+ if(indice!==""){personagens[Number(indice)]=p;aviso("Personagem atualizado!")}
+ else{personagens.push(p);aviso("Personagem salvo!")}
+ gravarDados(CHAVES.personagens,personagens);
+ limparFormularioPersonagem();listarPersonagens();atualizarSeletores();
 }
-
 function listarPersonagens(){
-  const personagens = obterListaPersonagens();
-  const lista = document.getElementById('listaPersonagens');
-
-  lista.innerHTML = '';
-
-  if(personagens.length === 0){
-    lista.textContent = 'Nenhum personagem cadastrado.';
-    return;
-  }
-
-  personagens.forEach(function(p,i){
-    const ficha = document.createElement('div');
-    ficha.className = 'status';
-
-    const titulo = document.createElement('h3');
-    titulo.textContent = p.nome;
-
-    const detalhes = document.createElement('p');
-    detalhes.style.whiteSpace = 'pre-line';
-
-    detalhes.textContent =
-      'Idade: '+(p.idade || 'Não informada')+
-      '\nAparência: '+(p.aparencia || 'Não informada')+
-      '\nPersonalidade: '+(p.personalidade || 'Não informada')+
-      '\nRoupas: '+(p.roupas || 'Não informadas')+
-      '\nPoderes: '+(p.poderes || 'Não informados')+
-      '\nVoz: '+(p.voz || 'Não informada');
-
-    const editar = document.createElement('button');
-    editar.textContent = 'EDITAR';
-    editar.onclick = function(){
-      editarPersonagem(i);
-    };
-
-    const excluir = document.createElement('button');
-    excluir.textContent = 'EXCLUIR';
-    excluir.className = 'botao-excluir';
-    excluir.onclick = function(){
-      excluirPersonagem(i);
-    };
-
-    ficha.appendChild(titulo);
-    ficha.appendChild(detalhes);
-    ficha.appendChild(editar);
-    ficha.appendChild(excluir);
-
-    lista.appendChild(ficha);
-  });
-}
-
-function editarPersonagem(i){
-  const personagens = obterListaPersonagens();
-  const p = personagens[i];
-
-  const nome = prompt('Nome do personagem:',p.nome);
-  if(nome === null || !nome.trim()) return;
-
-  p.nome = nome.trim();
-  p.idade = prompt('Idade:',p.idade) ?? p.idade;
-  p.aparencia = prompt('Aparência:',p.aparencia) ?? p.aparencia;
-  p.personalidade = prompt('Personalidade:',p.personalidade) ?? p.personalidade;
-  p.roupas = prompt('Roupas e acessórios:',p.roupas) ?? p.roupas;
-  p.poderes = prompt('Poderes:',p.poderes) ?? p.poderes;
-  p.voz = prompt('Voz:',p.voz) ?? p.voz;
-
-  localStorage.setItem(
-    'alfaPersonagens',
-    JSON.stringify(personagens)
-  );
-
-  listarPersonagens();
-  alert('Personagem atualizado!');
-}
-
-function excluirPersonagem(i){
-  if(!confirm('Deseja excluir este personagem?')) return;
-
-  const personagens = obterListaPersonagens();
-
-  personagens.splice(i,1);
-
-  localStorage.setItem(
-    'alfaPersonagens',
-    JSON.stringify(personagens)
-  );
-
-  listarPersonagens();
-  alert('Personagem excluído!');
-}
-
-// ==================================
-// ENVIAR PERSONAGENS AO ASSISTENTE
-// ==================================
-
-function obterPersonagensSalvos(){
-  const personagens = obterListaPersonagens();
-
-  if(personagens.length === 0){
-    return 'Nenhum personagem cadastrado.';
-  }
-
-  return personagens.map(function(p){
-    return `
-NOME: ${p.nome}
-IDADE: ${p.idade || 'Não informada'}
-APARÊNCIA: ${p.aparencia || 'Não informada'}
-PERSONALIDADE: ${p.personalidade || 'Não informada'}
-ROUPAS: ${p.roupas || 'Não informadas'}
-PODERES: ${p.poderes || 'Não informados'}
-VOZ: ${p.voz || 'Não informada'}
-`;
-  }).join('\n');
-}
-
-// ==================================
-// ASSISTENTE CHATGPT
-// ==================================
-
-function prepararPedidoChatGPT(){
-  const anime = document.getElementById('iaAnime').value.trim();
-  const estilo = document.getElementById('iaEstilo').value;
-  const duracao = document.getElementById('iaDuracao').value;
-  const historia = document.getElementById('iaHistoria').value.trim();
-
-  if(!historia){
-    alert('Descreva a história primeiro!');
-    return;
-  }
-
-  const personagens = obterPersonagensSalvos();
-
-  const pedido = `
-Você é o roteirista principal do ALFA ANIME STUDIO.
-
-Crie um episódio original de anime.
-
-NOME: ${anime || 'A definir'}
-ESTILO: ${estilo}
-DURAÇÃO: ${duracao}
-
-HISTÓRIA:
-${historia}
-
-PERSONAGENS CADASTRADOS:
-${personagens}
-
-INSTRUÇÕES:
-1. Crie um roteiro original.
-2. Divida a história em cenas.
-3. Descreva detalhadamente os cenários.
-4. Descreva as ações e expressões dos personagens.
-5. Escreva todos os diálogos em português brasileiro.
-6. Identifique quem está falando em cada diálogo.
-7. Separe a narração das falas.
-8. Mantenha a aparência e personalidade dos personagens consistentes.
-9. Inclua efeitos sonoros e indicações de música.
-10. Termine com um encerramento adequado à história.
-
-FORMATO:
-
-CENA 1:
-CENÁRIO:
-PERSONAGENS:
-AÇÕES:
-DIÁLOGOS:
-ÁUDIO:
-DURAÇÃO:
-
-Repita para todas as cenas.
-
-Entregue um roteiro pronto para produção.
-`;
-
-  document.getElementById('pedidoChatGPT').value = pedido;
-}
-
-function copiarPedidoChatGPT(){
-  const campo = document.getElementById('pedidoChatGPT');
-
-  if(!campo.value.trim()){
-    alert('Primeiro crie o pedido!');
-    return;
-  }
-
-  campo.select();
-
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(campo.value)
-      .then(function(){
-        alert('Pedido copiado! Abra o ChatGPT e cole a mensagem.');
-      })
-      .catch(function(){
-        alert('Selecione o texto e escolha Copiar.');
-      });
-  }else{
-    alert('Selecione o texto e escolha Copiar.');
-  }
-}
-
-// ==================================
-// INICIALIZAÇÃO
-// ==================================
-
-mostrarProjetos();
-listarPersonagens();
-
-</script>
-
-</body>
-  </html>
+ const lista=document.getElementById("listaPersonagens");
+ const personagens=lerDados(CHAVES.personagens);
+ lista.innerHTML="";
+ if(!personagens.length){lista.innerHTML='<div class="card">Nenhum personagem cadastrado.</div>';return}
+ personagens.forEach((p,i)=>{
+  const nome=p.nome||p.name||"Personagem";
+  const div=document.createElement("div");div.className="item";
+  div.innerHTML="<h3>"+escapar(nome)+"</h3><p><b>Idade:</b> "+escapar(p.idade||"Não definida")+"<br><b>Aparência:</b> "+escapar(p.aparencia||p.appearance||"Não definida")+"<br><b>Roupas:</b> "+escapar(p.roupas||"Não definidas")+"<br><b>Personalidade:</b> "+escapar(p.personalidade||"Não definida")+"<br><b>Poderes:</b> "+escapar(p.poderes||"Não definidos")+"<br><b>Voz:</b> "+escapar(p.voz||"Não definida")+"</p><button class='action secondary' onclick='editarPersonagem("+i+")'>EDITAR</button><button class='action danger' onclick='excluirPersonagem("+i+")'>EXCLUIR</button>";
   

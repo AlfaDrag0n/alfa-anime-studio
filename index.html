@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10101c">
+<title>Alfa Anime Studio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#10101c;color:#f7f3ff;font-family:Arial,sans-serif}
+header{padding:25px 18px;background:linear-gradient(135deg,#241747,#11111d);border-bottom:1px solid #514075}
+header h1{margin:0;color:#c4a5ff;font-size:25px}
+header p{color:#c5bdd7;font-size:12px}
+main{padding:16px;max-width:650px;margin:auto}
+.card{background:#1b1a2b;border:1px solid #39334e;border-radius:15px;padding:17px;margin-bottom:15px}
+h2{font-size:17px;color:#d2b8ff;margin-top:0}
+p{color:#bcb5ce;font-size:13px;line-height:1.5}
+label{display:block;margin:13px 0 7px;font-size:13px;color:#ddd4ed}
+input,select,textarea{width:100%;padding:13px;border-radius:9px;border:1px solid #51466a;background:#11111d;color:white;font-size:14px}
+textarea{min-height:85px;resize:vertical}
+button{background:#8054db;color:white;border:0;padding:13px;border-radius:9px;font-weight:bold;width:100%;margin-top:13px;font-size:14px}
+button:active{opacity:.8}
+.menu{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:15px}
+.menu div{background:#211e34;padding:15px;border-radius:11px;border:1px solid #39334e;font-size:13px}
+.menu b{display:block;color:#d6c0ff;margin-bottom:5px}
+.status{padding:12px;background:#27213b;border-radius:9px;color:#d9c8ff;font-size:13px}
+footer{text-align:center;color:#777;font-size:11px;padding:25px}
+</style>
+</head>
+<body>
+<header>
+<h1>🐉 ALFA ANIME STUDIO</h1>
+<p>SUA CENTRAL DE PRODUÇÃO DE ANIMES</p>
+<p>● ESTÚDIO INICIALIZADO</p>
+</header>
+<main>
+<div class="menu">
+<div>🎬<b>Produções</b>Gerenciar animes</div>
+<div>👤<b>Personagens</b>Banco de personagens</div>
+<div>🎨<b>Estilos</b>Biblioteca visual</div>
+<div>🎙️<b>Dublagem</b>Central de vozes</div>
+<div>📖<b>Roteiros</b>Histórias e episódios</div>
+<div>🎞️<b>Editor</b>Montagem de vídeos</div>
+</div>
+<section class="card">
+<h2>🎬 Criar novo anime</h2>
+<label>Nome da obra</label>
+<input id="obra" placeholder="Ex: Kael, o Híbrido">
+<label>Número do episódio</label>
+<input id="episodio" type="number" min="1" value="1">
+<label>Duração</label>
+<select id="duracao">
+<option>1 minuto</option>
+<option selected>2 minutos</option>
+<option>3 minutos</option>
+<option>5 minutos</option>
+<option>10 minutos</option>
+<option>20 minutos</option>
+</select>
+<label>Estilo de animação</label>
+<select id="estilo">
+<option>Anime 2D tradicional</option>
+<option>Anime 3D</option>
+<option>Anime híbrido 2.5D</option>
+<option>Dark Fantasy</option>
+<option>Shonen</option>
+<option>Seinen</option>
+<option>Chibi</option>
+<option>Aquarela</option>
+<option>Cinematográfico</option>
+<option>Personalizado</option>
+</select>
+<label>Idioma das vozes</label>
+<select id="idioma">
+<option>Português brasileiro</option>
+<option>Japonês</option>
+<option>Inglês</option>
+</select>
+<label>Descrição da história</label>
+<textarea id="historia" placeholder="Descreva a história do episódio..."></textarea>
+<button onclick="criarProjeto()">CADASTRAR PROJETO</button>
+</section>
+<section class="card">
+<h2>🤖 Central de produção</h2>
+<div id="estado" class="status">Aguardando seu primeiro projeto.</div>
+<p>📖 Roteiro: aguardando</p>
+<p>🎨 Personagens: aguardando</p>
+<p>🎙️ Dublagem: aguardando</p>
+<p>🎞️ Animação: aguardando</p>
+<p>✂️ Edição: aguardando</p>
+</section>
+<section class="card">
+<h2>📂 Meus projetos</h2>
+<div id="lista"><p>Nenhum projeto cadastrado.</p></div>
+</section>
+<footer>ALFA ANIME STUDIO © 2026<br>Desenvolvido para criar histórias sem limites.</footer>
+</main>
+<script>
+let projetos=[];
+function criarProjeto(){
+let obra=document.getElementById('obra').value.trim();
+let historia=document.getElementById('historia').value.trim();
+if(!obra||!historia){alert('Preencha o nome do anime e a história!');return;}
+let p={
+obra:obra,
+episodio:document.getElementById('episodio').value,
+duracao:document.getElementById('duracao').value,
+estilo:document.getElementById('estilo').value,
+idioma:document.getElementById('idioma').value,
+historia:historia
+};
+projetos.push(p);
+document.getElementById('estado').textContent='Projeto cadastrado: '+obra;
+document.getElementById('lista').innerHTML=projetos.map((p,i)=>
+'<div class="status" style="margin-top:10px"><b>'+ (i+1)+'. '+p.obra+'</b><br> Episódio '+p.episodio+' • '+p.duracao+'<br>'+p.estilo+'<br>'+p.idioma+'</div>'
+).join('');
+alert('Projeto cadastrado com sucesso!');
+}
+</script>
+</body>
+</html>

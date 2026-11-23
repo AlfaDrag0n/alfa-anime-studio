@@ -453,6 +453,54 @@ function listarPersonagens(){
     return;
   }
 
+  personagens.forEach(function(p,i){
+    const ficha=document.createElement('div');
+    ficha.className='status';
+
+    const titulo=document.createElement('h3');
+    titulo.textContent=p.nome;
+
+    const detalhes=document.createElement('p');
+    detalhes.style.whiteSpace='pre-line';
+    detalhes.textContent=
+      'Idade: '+(p.idade || 'Não informada')+
+      '\nAparência: '+(p.aparencia || 'Não informada')+
+      '\nPersonalidade: '+(p.personalidade || 'Não informada')+
+      '\nRoupas: '+(p.roupas || 'Não informadas')+
+      '\nPoderes: '+(p.poderes || 'Não informados')+
+      '\nVoz: '+(p.voz || 'Não informada');
+
+    const editar=document.createElement('button');
+    editar.textContent='EDITAR';
+    editar.onclick=function(){
+      editarPersonagem(i);
+    };
+
+    const excluir=document.createElement('button');
+    excluir.textContent='EXCLUIR';
+    excluir.onclick=function(){
+      excluirPersonagem(i);
+    };
+
+    ficha.appendChild(titulo);
+    ficha.appendChild(detalhes);
+    ficha.appendChild(editar);
+    ficha.appendChild(excluir);
+    lista.appendChild(ficha);
+  });
+}
+  const personagens=JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
+
+  const lista=document.getElementById('listaPersonagens');
+  lista.innerHTML='';
+
+  if(personagens.length===0){
+    lista.textContent='Nenhum personagem cadastrado.';
+    return;
+  }
+
   personagens.forEach(function(p){
     const ficha=document.createElement('div');
     ficha.className='status';
@@ -494,6 +542,50 @@ ROUPAS: ${p.roupas || 'Não informadas'}
 PODERES: ${p.poderes || 'Não informados'}
 VOZ: ${p.voz || 'Não informada'}
 `).join('\n');
+}
+function editarPersonagem(i){
+  const personagens=JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
+
+  const p=personagens[i];
+
+  const nome=prompt('Nome do personagem:',p.nome);
+  if(nome===null || !nome.trim()) return;
+
+  p.nome=nome.trim();
+  p.idade=prompt('Idade:',p.idade) ?? p.idade;
+  p.aparencia=prompt('Aparência:',p.aparencia) ?? p.aparencia;
+  p.personalidade=prompt('Personalidade:',p.personalidade) ?? p.personalidade;
+  p.roupas=prompt('Roupas e acessórios:',p.roupas) ?? p.roupas;
+  p.poderes=prompt('Poderes:',p.poderes) ?? p.poderes;
+  p.voz=prompt('Voz:',p.voz) ?? p.voz;
+
+  localStorage.setItem(
+    'alfaPersonagens',
+    JSON.stringify(personagens)
+  );
+
+  listarPersonagens();
+  alert('Personagem atualizado!');
+}
+
+function excluirPersonagem(i){
+  if(!confirm('Deseja excluir este personagem?')) return;
+
+  const personagens=JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
+
+  personagens.splice(i,1);
+
+  localStorage.setItem(
+    'alfaPersonagens',
+    JSON.stringify(personagens)
+  );
+
+  listarPersonagens();
+  alert('Personagem excluído!');
 }
 </script>
 </body>

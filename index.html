@@ -475,6 +475,25 @@ function listarPersonagens(){
 }
 
 listarPersonagens();
+function obterPersonagensSalvos(){
+  const personagens=JSON.parse(
+    localStorage.getItem('alfaPersonagens') || '[]'
+  );
+
+  if(personagens.length===0){
+    return 'Nenhum personagem cadastrado.';
+  }
+
+  return personagens.map(p=>`
+NOME: ${p.nome}
+IDADE: ${p.idade || 'Não informada'}
+APARÊNCIA: ${p.aparencia || 'Não informada'}
+PERSONALIDADE: ${p.personalidade || 'Não informada'}
+ROUPAS: ${p.roupas || 'Não informadas'}
+PODERES: ${p.poderes || 'Não informados'}
+VOZ: ${p.voz || 'Não informada'}
+`).join('\n');
+}
 </script>
 </body>
 </html>

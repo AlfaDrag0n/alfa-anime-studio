@@ -122,6 +122,51 @@ footer{text-align:center;color:#777;font-size:11px;padding:25px}
     Seu roteiro aparecerá aqui.
   </div>
 </section>
+<section class="card">
+  <h2>🤖 Assistente ChatGPT</h2>
+  <p>Prepare seu anime com ajuda do ChatGPT.</p>
+
+  <label>Nome do anime</label>
+  <input id="iaAnime" placeholder="Nome do anime">
+
+  <label>Estilo de animação</label>
+  <select id="iaEstilo">
+    <option>Anime 2D tradicional</option>
+    <option>Anime 3D</option>
+    <option>Anime 2.5D</option>
+    <option>Dark Fantasy</option>
+    <option>Shonen</option>
+    <option>Seinen</option>
+    <option>Chibi</option>
+    <option>Aquarela</option>
+    <option>Cinematográfico</option>
+    <option>Personalizado</option>
+  </select>
+
+  <label>Duração do episódio</label>
+  <select id="iaDuracao">
+    <option>1 minuto</option>
+    <option>2 minutos</option>
+    <option>5 minutos</option>
+    <option>10 minutos</option>
+    <option>20 minutos</option>
+  </select>
+
+  <label>Descreva sua história</label>
+  <textarea id="iaHistoria" rows="5"
+    placeholder="Conte sua ideia..."></textarea>
+
+  <button onclick="prepararPedidoChatGPT()">
+    🤖 CRIAR COM CHATGPT
+  </button>
+
+  <textarea id="pedidoChatGPT" rows="10"
+    placeholder="Seu pedido para o ChatGPT aparecerá aqui..."></textarea>
+
+  <button onclick="copiarPedidoChatGPT()">
+    📋 COPIAR PEDIDO
+  </button>
+</section>
 </main>
 <script>
 let projetos=[];
@@ -195,6 +240,74 @@ FIM DO EPISÓDIO
 `;
 
   resultado.textContent=roteiro;
+}
+function prepararPedidoChatGPT(){
+  const anime=document.getElementById('iaAnime').value.trim();
+  const estilo=document.getElementById('iaEstilo').value;
+  const duracao=document.getElementById('iaDuracao').value;
+  const historia=document.getElementById('iaHistoria').value.trim();
+
+  if(!historia){
+    alert('Descreva a história primeiro!');
+    return;
+  }
+
+  const pedido=`
+Você é o roteirista principal do ALFA ANIME STUDIO.
+
+Crie um episódio original de anime.
+
+NOME: ${anime || 'A definir'}
+ESTILO: ${estilo}
+DURAÇÃO: ${duracao}
+
+HISTÓRIA:
+${historia}
+
+INSTRUÇÕES:
+1. Crie um roteiro original.
+2. Divida a história em cenas.
+3. Descreva detalhadamente os cenários.
+4. Descreva as ações e expressões dos personagens.
+5. Escreva todos os diálogos em português brasileiro.
+6. Identifique quem está falando em cada diálogo.
+7. Separe a narração das falas.
+8. Mantenha a aparência e personalidade dos personagens consistentes.
+9. Inclua efeitos sonoros e indicações de música.
+10. Termine com um encerramento adequado à história.
+
+FORMATO:
+CENA 1:
+CENÁRIO:
+PERSONAGENS:
+AÇÕES:
+DIÁLOGOS:
+ÁUDIO:
+DURAÇÃO:
+
+Repita para todas as cenas.
+Entregue um roteiro pronto para produção.
+`;
+
+  document.getElementById('pedidoChatGPT').value=pedido;
+}
+
+function copiarPedidoChatGPT(){
+  const campo=document.getElementById('pedidoChatGPT');
+
+  if(!campo.value.trim()){
+    alert('Primeiro crie o pedido!');
+    return;
+  }
+
+  campo.select();
+  navigator.clipboard.writeText(campo.value)
+    .then(()=>alert('Pedido copiado! Abra o ChatGPT e cole a mensagem.'))
+    .catch(()=>{
+      campo.focus();
+      campo.select();
+      alert('Selecione o texto e escolha Copiar.');
+    });
 }
 </script>
 </body>

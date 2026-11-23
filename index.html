@@ -98,6 +98,7 @@ footer{text-align:center;color:#777;font-size:11px;padding:25px}
 </main>
 <script>
 let projetos=[];
+  projetos=JSON.parse(localStorage.getItem('alfaProjetos') || '[]');
 function criarProjeto(){
 let obra=document.getElementById('obra').value.trim();
 let historia=document.getElementById('historia').value.trim();
@@ -111,11 +112,16 @@ idioma:document.getElementById('idioma').value,
 historia:historia
 };
 projetos.push(p);
+  localStorage.setItem('alfaProjetos', JSON.stringify(projetos));
 document.getElementById('estado').textContent='Projeto cadastrado: '+obra;
 document.getElementById('lista').innerHTML=projetos.map((p,i)=>
 '<div class="status" style="margin-top:10px"><b>'+ (i+1)+'. '+p.obra+'</b><br> Episódio '+p.episodio+' • '+p.duracao+'<br>'+p.estilo+'<br>'+p.idioma+'</div>'
 ).join('');
 alert('Projeto cadastrado com sucesso!');
+}if(projetos.length){
+  document.getElementById('lista').innerHTML=projetos.map(p=>
+    '<div class="status"><b>'+p.obra+'</b> - Episódio '+p.episodio+'</div>'
+  ).join('');
 }
 </script>
 </body>

@@ -281,7 +281,7 @@ function prepararPedidoChatGPT(){
     alert('Descreva a história primeiro!');
     return;
   }
-
+const personagens=obterPersonagensSalvos();
   const pedido=`
 Você é o roteirista principal do ALFA ANIME STUDIO.
 
@@ -293,7 +293,8 @@ DURAÇÃO: ${duracao}
 
 HISTÓRIA:
 ${historia}
-
+PERSONAGENS CADASTRADOS:
+${personagens}
 INSTRUÇÕES:
 1. Crie um roteiro original.
 2. Divida a história em cenas.
